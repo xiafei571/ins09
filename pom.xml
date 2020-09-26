@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.edu</groupId>
-	<artifactId>mini-ins09</artifactId>
+	<artifactId>ins09</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ins09</name>
 	<description>Demo project for Spring Boot</description>
