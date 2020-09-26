@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>ins09</name>
-	<!-- 在国内的话需要使用下面这段repositories来指定阿里云的库 
+	<!-- 在国内的话需要使用下面这段repositories来指定阿里云的库 -->
 	<repositories>
 		<repository>
 			<id>alimaven</id>
@@ -21,7 +21,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	-->
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
