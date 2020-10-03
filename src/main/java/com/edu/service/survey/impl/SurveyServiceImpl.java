@@ -15,7 +15,7 @@ public class SurveyServiceImpl implements SurveyService {
 
 	@Override
 	public Result<SurveyForm> getSurveyForm(Integer surveyId) {
-		//TODO 
+		//TODO  假数据，真正的要去数据库调用
 		SurveyForm sf = new SurveyForm();
 		SurveyOption s1 = new SurveyOption(surveyId, 1001, "計算理論");
 		SurveyOption s2 = new SurveyOption(surveyId, 1002, "プログラム理論");
