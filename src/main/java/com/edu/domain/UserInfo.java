@@ -36,10 +36,10 @@ public class UserInfo {
 	// 开关
 	private Integer onOff;
 
-	// 创建时间
+	// 创建时间 now()
 	private Date gmtCreate;
 
-	// 修改时间
+	// 修改时间 now()
 	private Date gmtModified;
 	
 	private UserCounter userCounter;
