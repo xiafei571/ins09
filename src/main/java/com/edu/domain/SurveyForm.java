@@ -7,6 +7,8 @@ public class SurveyForm {
 	private Integer stuId;
 
 	private Integer surveyId;
+	
+	private String surveyDesc;
 
 	private List<SurveyOption> options;
 
@@ -65,6 +67,14 @@ public class SurveyForm {
 
 	public void setTop3(Integer top3) {
 		this.top3 = top3;
+	}
+	
+	public String getSurveyDesc() {
+		return surveyDesc;
+	}
+
+	public void setSurveyDesc(String surveyDesc) {
+		this.surveyDesc = surveyDesc;
 	}
 
 	@Override

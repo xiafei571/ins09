@@ -28,6 +28,7 @@ public class SurveyServiceImpl implements SurveyService {
 		SurveyOption s9 = new SurveyOption(surveyId, 1009, "画像解析");
 		SurveyOption s10 = new SurveyOption(surveyId, 1010, "並列アーキテクチャ");
 		List<SurveyOption> options = Lists.newArrayList(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10);
+		sf.setSurveyDesc("Project选择アンケート");
 		sf.setOptions(options);
 		sf.setSurveyId(surveyId);
 		return new Result<SurveyForm>(sf);
