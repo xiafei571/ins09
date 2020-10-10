@@ -1,5 +1,7 @@
 package com.edu.domain;
 
+import java.util.Date;
+
 public class SurveyOption {
 
 	private Integer surveyId;
@@ -7,6 +9,10 @@ public class SurveyOption {
 	private Integer optionId;
 
 	private String optionDesc;
+	
+	private Date gmtCreate;
+	
+	private Date gmtModified;
 
 	public Integer getSurveyId() {
 		return surveyId;
@@ -30,6 +36,22 @@ public class SurveyOption {
 
 	public void setOptionDesc(String optionDesc) {
 		this.optionDesc = optionDesc;
+	}
+
+	public Date getGmtCreate() {
+		return gmtCreate;
+	}
+
+	public void setGmtCreate(Date gmtCreate) {
+		this.gmtCreate = gmtCreate;
+	}
+
+	public Date getGmtModified() {
+		return gmtModified;
+	}
+
+	public void setGmtModified(Date gmtModified) {
+		this.gmtModified = gmtModified;
 	}
 
 	@Override
