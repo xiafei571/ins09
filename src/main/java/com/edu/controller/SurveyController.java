@@ -3,8 +3,10 @@ package com.edu.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.edu.domain.SurveyForm;
@@ -26,7 +28,7 @@ public class SurveyController {
 	
 	@RequestMapping(path="/form/{id}", method=RequestMethod.POST)
 	@ResponseBody
-	public Result submitSurveyForm(SurveyForm form) {
+	public Result submitSurveyForm(@RequestBody SurveyForm form) {
 		return surveyService.submitSurveyForm(form);
 	}
 
