@@ -2,6 +2,7 @@ package com.edu.service.survey.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,13 +52,21 @@ public class SurveyServiceImpl implements SurveyService {
 		surveyRecord.setGmtCreate(new Date());
 		surveyRecord.setGmtModified(new Date());
 		int count = surveyMapper.selcetCountBySurveyId(form.getSurveyId());
+		System.out.println(count);
 		if (count < 50) {
 			int result = surveyMapper.addRecord(surveyRecord);
+			return new Result(0,"提交成功");
+		} else if (count == 50) {
+			calculateResult(form.getSurveyId());
+			return new Result(0,"提交成功");
 		} else {
-			int result = surveyMapper.addRecord(surveyRecord);
-			List<SurveyRecord> resultList = surveyMapper.selcetAllBySurveyId(form.getSurveyId());
+			return new Result(0,"提交失败，名额已满");
 		}
-		return new Result(0,"提交成功");
 	}
-
+	
+	public Map<String , String> calculateResult(Integer surveyId) { 
+		List<SurveyRecord> resultList = surveyMapper.selcetAllBySurveyId(surveyId);
+		System.out.println(resultList);
+		return null;
+	}
 }
