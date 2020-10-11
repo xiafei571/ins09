@@ -67,6 +67,7 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 	
 	public Map<String , List<Integer>> calculateResult(Integer surveyId) { 
+		int happiness = 250;
 		List<SurveyRecord> resultList = surveyMapper.selcetAllBySurveyId(surveyId);
 		List<Integer> option1 = new ArrayList<Integer>();
 		List<Integer> option2 = new ArrayList<Integer>();
@@ -125,6 +126,7 @@ public class SurveyServiceImpl implements SurveyService {
 								if (option_1.equals(optionsArray[0]) && option.equals(optionsArray[1])) {
 									resultMap.get(option_1).remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
 									resultMap.get(option).add(surveyRecord.getStuId());
+									happiness = happiness - 2;
 									if (resultMap.get(option).size() >= 4) {
 										break aa;
 									}
@@ -145,6 +147,7 @@ public class SurveyServiceImpl implements SurveyService {
 								if (option_1.equals(optionsArray[0]) && option.equals(optionsArray[2])) {
 									resultMap.get(option_1).remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
 									resultMap.get(option).add(surveyRecord.getStuId());
+									happiness = happiness - 3;
 									if (resultMap.get(option).size() >= 4) {
 										break aa;
 									}
@@ -162,6 +165,7 @@ public class SurveyServiceImpl implements SurveyService {
 							Integer stuId = resultMap.get(option_1).get(resultMap.get(option_1).size() - 1);
 							resultMap.get(option_1).remove(resultMap.get(option_1).size() - 1);
 							resultMap.get(option).add(stuId);
+							happiness = happiness - 5;
 							if (resultMap.get(option).size() >= 4) {
 								break aa;
 							}
@@ -178,6 +182,7 @@ public class SurveyServiceImpl implements SurveyService {
 								if (option_1.equals(optionsArray[0]) && option.equals(optionsArray[1])) {
 									resultMap.get(option_1).remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
 									resultMap.get(option).add(surveyRecord.getStuId());
+									happiness = happiness - 2;
 									if (resultMap.get(option).size() >= 4) {
 										break aa;
 									}
@@ -198,6 +203,7 @@ public class SurveyServiceImpl implements SurveyService {
 								if (option_1.equals(optionsArray[0]) && option.equals(optionsArray[2])) {
 									resultMap.get(option_1).remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
 									resultMap.get(option).add(surveyRecord.getStuId());
+									happiness = happiness - 3;
 									if (resultMap.get(option).size() >= 4) {
 										break aa;
 									}
@@ -215,6 +221,7 @@ public class SurveyServiceImpl implements SurveyService {
 							Integer stuId = resultMap.get(option_1).get(resultMap.get(option_1).size() - 1);
 							resultMap.get(option_1).remove(resultMap.get(option_1).size() - 1);
 							resultMap.get(option).add(stuId);
+							happiness = happiness - 5;
 							if (resultMap.get(option).size() >= 4) {
 								break aa;
 							}
@@ -227,6 +234,7 @@ public class SurveyServiceImpl implements SurveyService {
 			}
 		}
 		System.out.println(resultMap);
+		System.out.println(happiness);
 		return resultMap;
 	}
 }
