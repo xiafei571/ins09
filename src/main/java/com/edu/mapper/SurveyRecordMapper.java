@@ -18,7 +18,7 @@ public interface SurveyRecordMapper {
 	int selcetCountBySurveyId(Integer surveyId);
 	
 	//向survey_record表中添加记录；
-	@Insert("Insert into survey_record values(default, #{surveyId}, #{stuId}, #{options})")
+	@Insert("insert into survey_record values(default, #{surveyId}, #{stuId}, #{options},#{gmtCreate},#{gmtModified})")
 	int addRecord(SurveyRecord surveyRecord);
 	
 	//查询survey_record表中的同一survey_id的50条数据;

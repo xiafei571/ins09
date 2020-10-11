@@ -1,5 +1,6 @@
 package com.edu.service.survey.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,8 @@ public class SurveyServiceImpl implements SurveyService {
 		surveyRecord.setOptions(options);
 		surveyRecord.setStuId(form.getStuId());
 		surveyRecord.setSurveyId(form.getSurveyId());
+		surveyRecord.setGmtCreate(new Date());
+		surveyRecord.setGmtModified(new Date());
 		int count = surveyMapper.selcetCountBySurveyId(form.getSurveyId());
 		if (count < 50) {
 			int result = surveyMapper.addRecord(surveyRecord);

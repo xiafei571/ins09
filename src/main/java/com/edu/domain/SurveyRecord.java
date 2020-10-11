@@ -1,5 +1,7 @@
 package com.edu.domain;
 
+import java.util.Date;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class SurveyRecord {
@@ -10,6 +12,26 @@ public class SurveyRecord {
 	private Integer stuId;
 
 	private String options;
+	
+	private Date gmtCreate;
+	
+	private Date gmtModified;
+
+	public Date getGmtCreate() {
+		return gmtCreate;
+	}
+
+	public void setGmtCreate(Date gmtCreate) {
+		this.gmtCreate = gmtCreate;
+	}
+
+	public Date getGmtModified() {
+		return gmtModified;
+	}
+
+	public void setGmtModified(Date gmtModified) {
+		this.gmtModified = gmtModified;
+	}
 
 	public int[] get_options_list() {
 		if (StringUtils.isEmpty(options)) {
