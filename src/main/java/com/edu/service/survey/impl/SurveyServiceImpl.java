@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.edu.domain.Survey;
 import com.edu.domain.SurveyForm;
 import com.edu.domain.SurveyOption;
 import com.edu.service.response.Result;
@@ -17,7 +18,7 @@ public class SurveyServiceImpl implements SurveyService {
 	public Result<SurveyForm> getSurveyForm(Integer surveyId) {
 		//TODO  假数据，真正的要去数据库调用
 		SurveyForm sf = new SurveyForm();
-		SurveyOption s1 = new SurveyOption(surveyId, 1001, "計算理論");
+		/*SurveyOption s1 = new SurveyOption(surveyId, 1001, "計算理論");
 		SurveyOption s2 = new SurveyOption(surveyId, 1002, "プログラム理論");
 		SurveyOption s3 = new SurveyOption(surveyId, 1003, "数理論理学");
 		SurveyOption s4 = new SurveyOption(surveyId, 1004, "プログラム言語論");
@@ -27,9 +28,11 @@ public class SurveyServiceImpl implements SurveyService {
 		SurveyOption s8 = new SurveyOption(surveyId, 1008, "自然言語処理");
 		SurveyOption s9 = new SurveyOption(surveyId, 1009, "画像解析");
 		SurveyOption s10 = new SurveyOption(surveyId, 1010, "並列アーキテクチャ");
-		List<SurveyOption> options = Lists.newArrayList(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10);
+		List<SurveyOption> options = Lists.newArrayList(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10);*/
+		
+	
 		sf.setSurveyDesc("Project选择アンケート");
-		sf.setOptions(options);
+		//sf.setOptions(options);
 		sf.setSurveyId(surveyId);
 		return new Result<SurveyForm>(sf);
 	}
@@ -40,5 +43,18 @@ public class SurveyServiceImpl implements SurveyService {
 		System.out.println(form);
 		return new Result(0,"提交成功");
 	}
+
+	@Override
+	public Survey getSurveyById(Integer surveyId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SurveyOption getOptionById(Integer surveyId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
