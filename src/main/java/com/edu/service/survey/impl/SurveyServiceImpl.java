@@ -2,16 +2,21 @@ package com.edu.service.survey.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.domain.SurveyForm;
 import com.edu.domain.SurveyOption;
+import com.edu.domain.SurveyRecord;
+import com.edu.mapper.SurveyRecordMapper;
 import com.edu.service.response.Result;
 import com.edu.service.survey.SurveyService;
 import com.google.common.collect.Lists;
 
 @Service
 public class SurveyServiceImpl implements SurveyService {
+	@Autowired
+	SurveyRecordMapper surveyMapper; 
 
 	@Override
 	public Result<SurveyForm> getSurveyForm(Integer surveyId) {
@@ -37,7 +42,18 @@ public class SurveyServiceImpl implements SurveyService {
 	@Override
 	public Result submitSurveyForm(SurveyForm form) {
 		//TODO 
-		System.out.println(form);
+		String options = form.getTop1() + "," +  form.getTop2() + "," +  form.getTop3();
+		SurveyRecord surveyRecord = new SurveyRecord();
+		surveyRecord.setOptions(options);
+		surveyRecord.setStuId(form.getStuId());
+		surveyRecord.setSurveyId(form.getSurveyId());
+		int count = surveyMapper.selcetCountBySurveyId(form.getSurveyId());
+		if (count < 50) {
+			int result = surveyMapper.addRecord(surveyRecord);
+		} else {
+			int result = surveyMapper.addRecord(surveyRecord);
+			List<SurveyRecord> resultList = surveyMapper.selcetAllBySurveyId(form.getSurveyId());
+		}
 		return new Result(0,"提交成功");
 	}
 
