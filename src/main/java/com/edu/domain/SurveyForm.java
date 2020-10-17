@@ -7,10 +7,16 @@ public class SurveyForm {
 	private Integer stuId;
 
 	private Integer surveyId;
-	
+
 	private String surveyDesc;
 
 	private List<SurveyOption> options;
+
+	public SurveyForm(Survey survey, List<SurveyOption> options) {
+		this.surveyId = survey.getSurveyId();
+		this.surveyDesc = survey.getSurveyDesc();
+		this.options = options;
+	}
 
 	// <input type="radio" name="top1" value="optionId"> optionId
 	private Integer top1;
@@ -68,7 +74,7 @@ public class SurveyForm {
 	public void setTop3(Integer top3) {
 		this.top3 = top3;
 	}
-	
+
 	public String getSurveyDesc() {
 		return surveyDesc;
 	}

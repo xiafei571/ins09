@@ -22,35 +22,24 @@ import com.google.common.collect.Lists;
 @SuppressWarnings("rawtypes")
 public class SurveyServiceImpl implements SurveyService {
 	@Autowired
-	SurveyRecordMapper surveyMapper;
+	private SurveyRecordMapper surveyRecordMapper;
+	@Autowired
+	private SurveyMapper surveyMapper;
 
 	@Override
 	public Result<SurveyForm> getSurveyForm(Integer surveyId) {
-		// TODO 假数据，真正的要去数据库调用
-		SurveyForm sf = new SurveyForm();
-
+		Survey survey = getSurveyById(surveyId);
 		List<SurveyOption> options = surveyMapper.getSurveyOptionList(surveyId);
-		sf.setSurveyDesc("Project选择アンケート");
-		sf.setOptions(options);
-		sf.setSurveyId(surveyId);
-		return new Result<SurveyForm>(sf);
+		return new Result<SurveyForm>(new SurveyForm(survey, options));
 	}
 
 	@Override
 	public Survey getSurveyById(Integer surveyId) {
-
 		return surveyMapper.getSurveyById(surveyId);
 	}
 
 	@Override
-	public Integer getSurvey_OptionById(Integer SurveyId) {
-
-		return surveyMapper.getSurvey_OptionById(SurveyId);
-	}
-
-	@Override
 	public List<SurveyOption> getSurveyOptionList(Integer option_id) {
-
 		return surveyMapper.getSurveyOptionList(option_id);
 	}
 
@@ -63,10 +52,10 @@ public class SurveyServiceImpl implements SurveyService {
 		surveyRecord.setSurveyId(form.getSurveyId());
 		surveyRecord.setGmtCreate(new Date());
 		surveyRecord.setGmtModified(new Date());
-		int count = surveyMapper.selcetCountBySurveyId(form.getSurveyId());
+		int count = surveyRecordMapper.selcetCountBySurveyId(form.getSurveyId());
 		System.out.println(count);
 		if (count < 50) {
-			int result = surveyMapper.addRecord(surveyRecord);
+			int result = surveyRecordMapper.addRecord(surveyRecord);
 			return new Result(0, "提交成功 " + result);
 		} else if (count == 50) {
 			calculateResult(form.getSurveyId());
@@ -77,7 +66,7 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	public Map<String, List<Integer>> calculateResult(Integer surveyId) {
-		List<SurveyRecord> recordList = surveyMapper.selcetAllBySurveyId(surveyId);
+		List<SurveyRecord> recordList = surveyRecordMapper.selcetAllBySurveyId(surveyId);
 		int scores[] = { 5, 3, 1, 0 };
 		// 测试每个人写的方法
 		RecordAnalysis rd = new RecordAnalysisWX();

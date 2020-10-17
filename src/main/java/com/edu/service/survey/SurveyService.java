@@ -15,8 +15,6 @@ public interface SurveyService {
 
 	Survey getSurveyById(Integer surveyId);
 
-	Integer getSurvey_OptionById(Integer SurveyId);
-
 	List<SurveyOption> getSurveyOptionList(Integer option_id);
 
 	Map<String, List<Integer>> calculateResult(Integer surveyId);

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.edu.mapper.SurveyMapper">
+	<resultMap type="com.edu.domain.Survey"
+		id="surveyResult">
+		<id property="surveyId" column="survey_id"/>
+		<result property="surveyDesc" column="survey_desc" />
+		<result property="gmtCreate" column="gmt_create" />
+		<result property="gmtModified" column="gmt_modified" />
+	</resultMap>
+	
+	<resultMap type="com.edu.domain.SurveyOption"
+		id="surveyOptionResult">
+		<id property="surveyId" column="survey_id"/>
+		<result property="optionId" column="option_id" />
+		<result property="optionDesc" column="option_desc" />
+		<result property="gmtCreate" column="gmt_create" />
+		<result property="gmtModified" column="gmt_modified" />
+	</resultMap>
+</mapper>
