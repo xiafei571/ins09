@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.edu.domain.SurveyRecord;
 
-public class RecordAnalysisGWJ extends RecordAnalysis {
+public class RecordAnalysisCHRIS extends RecordAnalysis {
 
 	@Override
 	Map<String, List<Integer>> cal_record(List<SurveyRecord> recordList, int scores[]) {
