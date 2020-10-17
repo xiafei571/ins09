@@ -1,9 +1,8 @@
 package com.edu.service.survey.impl;
 
 import java.util.List;
-import java.util.Map;
-
 import com.edu.domain.SurveyRecord;
+import com.edu.domain.SurveyResult;
 
 abstract class RecordAnalysis {
 
@@ -18,6 +17,6 @@ abstract class RecordAnalysis {
 	 * @return {"option_id" : [student_id1, student_id2, student_id3, student_id4,
 	 *         student_id5]}
 	 */
-	abstract Map<String, List<Integer>> cal_record(List<SurveyRecord> recordList, int scores[]);
+	abstract SurveyResult cal_record(List<SurveyRecord> recordList, int scores[]);
 
 }

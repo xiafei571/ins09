@@ -2,9 +2,9 @@ package com.edu.service.survey;
 
 import java.util.List;
 import com.edu.domain.Survey;
-import java.util.Map;
 import com.edu.domain.SurveyForm;
 import com.edu.domain.SurveyOption;
+import com.edu.domain.SurveyResult;
 import com.edu.service.response.Result;
 
 public interface SurveyService {
@@ -17,5 +17,7 @@ public interface SurveyService {
 
 	List<SurveyOption> getSurveyOptionList(Integer option_id);
 
-	Map<String, List<Integer>> calculateResult(Integer surveyId);
+	 Result<SurveyResult> calculateResult(Integer surveyId, Integer testId);
+	
+	Result<String> generateRandomData(Integer surveyId, Integer count);
 }

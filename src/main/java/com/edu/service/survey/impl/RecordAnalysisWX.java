@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.edu.domain.SurveyRecord;
+import com.edu.domain.SurveyResult;
 
 public class RecordAnalysisWX extends RecordAnalysis {
 
 	@Override
-	Map<String, List<Integer>> cal_record(List<SurveyRecord> recordList, int scores[]) {
+	SurveyResult cal_record(List<SurveyRecord> recordList, int scores[]) {
+		SurveyResult result = new SurveyResult();
 		int happiness = 250;
 		List<Integer> option1 = new ArrayList<Integer>();
 		List<Integer> option2 = new ArrayList<Integer>();
@@ -180,10 +182,9 @@ public class RecordAnalysisWX extends RecordAnalysis {
 				}
 			}
 		}
-		System.out.println(resultMap);
-		System.out.println(happiness);
-		return resultMap;
-
+		result.setResultList(resultMap);
+		result.setScore(happiness);
+		return result;
 	}
 
 }

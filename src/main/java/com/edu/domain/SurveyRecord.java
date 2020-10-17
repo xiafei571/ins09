@@ -85,6 +85,13 @@ public class SurveyRecord {
 		this.stuId = stuId;
 		this.options = options;
 	}
+	
+	public SurveyRecord(Integer surveyId, Integer stuId, String options) {
+		super();
+		this.surveyId = surveyId;
+		this.stuId = stuId;
+		this.options = options;
+	}
 
 	public SurveyRecord() {
 	}
