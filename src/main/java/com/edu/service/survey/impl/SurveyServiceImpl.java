@@ -121,10 +121,25 @@ public class SurveyServiceImpl implements SurveyService {
 		}
 		return hs;
 	}
+	
+	private static List<Integer> randomOption2(int[] poor, int size){
+		if (poor.length == 0 || size <= 0)
+			return null;
+		List<Integer> list = new ArrayList<Integer>();
+		Random opt_random = new Random();
+		int last = -1;
+		while (list.size() < size) {
+			int index = opt_random.nextInt(poor.length);
+			if(index != last) {
+				list.add(poor[index]);
+				last = index;
+			}
+		}
+		return list;
+	}
 
 	private static String randomOptionStr(int[] poor, int size) {
-		HashSet<Integer> hs = randomOption(poor, size);
-		return Joiner.on(",").join(hs);
+		return Joiner.on(",").join(randomOption2(poor, size));
 	}
 
 }
