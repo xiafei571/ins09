@@ -13,7 +13,13 @@ public class RecordAnalysisWX extends RecordAnalysis {
 	@Override
 	SurveyResult cal_record(List<SurveyRecord> recordList, int scores[]) {
 		SurveyResult result = new SurveyResult();
-		int happiness = 250;
+		int avg = 0;
+		if (recordList.size() % 10 > 0) {
+			avg = recordList.size() / 10 + 1;
+		} else {
+			avg = recordList.size() / 10;
+		}
+		Integer score = recordList.size() * scores[0];
 		List<Integer> option1 = new ArrayList<Integer>();
 		List<Integer> option2 = new ArrayList<Integer>();
 		List<Integer> option3 = new ArrayList<Integer>();
@@ -61,10 +67,10 @@ public class RecordAnalysisWX extends RecordAnalysis {
 		resultMap.put("9", option9);
 		resultMap.put("10", option10);
 		for (String option : resultMap.keySet()) {
-			if (resultMap.get(option).size() < 4) {
+			if (resultMap.get(option).size() < avg - 1) {
 				aa: for (;;) {
 					for (String option_1 : resultMap.keySet()) {
-						if (resultMap.get(option_1).size() > 6) {
+						if (resultMap.get(option_1).size() > avg + 1) {
 							for (SurveyRecord surveyRecord : recordList) {
 								String options = surveyRecord.getOptions();
 								String optionsArray[] = options.split(",");
@@ -72,8 +78,8 @@ public class RecordAnalysisWX extends RecordAnalysis {
 									resultMap.get(option_1)
 											.remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
 									resultMap.get(option).add(surveyRecord.getStuId());
-									happiness = happiness - 2;
-									if (resultMap.get(option).size() >= 4) {
+									score = score - scores[0] + scores[1];
+									if (resultMap.get(option).size() >= avg - 1) {
 										break aa;
 									}
 								} else {
@@ -82,11 +88,11 @@ public class RecordAnalysisWX extends RecordAnalysis {
 							}
 						}
 					}
-					if (resultMap.get(option).size() >= 4) {
+					if (resultMap.get(option).size() >= avg -1) {
 						break;
 					}
 					for (String option_1 : resultMap.keySet()) {
-						if (resultMap.get(option_1).size() > 6) {
+						if (resultMap.get(option_1).size() > avg + 1) {
 							for (SurveyRecord surveyRecord : recordList) {
 								String options = surveyRecord.getOptions();
 								String optionsArray[] = options.split(",");
@@ -94,8 +100,8 @@ public class RecordAnalysisWX extends RecordAnalysis {
 									resultMap.get(option_1)
 											.remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
 									resultMap.get(option).add(surveyRecord.getStuId());
-									happiness = happiness - 3;
-									if (resultMap.get(option).size() >= 4) {
+									score = score - scores[0] + scores[2];
+									if (resultMap.get(option).size() >= avg - 1) {
 										break aa;
 									}
 								} else {
@@ -104,25 +110,25 @@ public class RecordAnalysisWX extends RecordAnalysis {
 							}
 						}
 					}
-					if (resultMap.get(option).size() >= 4) {
+					if (resultMap.get(option).size() >= avg - 1) {
 						break;
 					}
 					for (String option_1 : resultMap.keySet()) {
-						if (resultMap.get(option_1).size() > 6) {
+						if (resultMap.get(option_1).size() > avg + 1) {
 							Integer stuId = resultMap.get(option_1).get(resultMap.get(option_1).size() - 1);
 							resultMap.get(option_1).remove(resultMap.get(option_1).size() - 1);
 							resultMap.get(option).add(stuId);
-							happiness = happiness - 5;
-							if (resultMap.get(option).size() >= 4) {
+							score = score - scores[0] + scores[3];
+							if (resultMap.get(option).size() >= avg - 1) {
 								break aa;
 							}
 						}
 					}
-					if (resultMap.get(option).size() >= 4) {
+					if (resultMap.get(option).size() >= avg - 1) {
 						break;
 					}
 					for (String option_1 : resultMap.keySet()) {
-						if (resultMap.get(option_1).size() > 5) {
+						if (resultMap.get(option_1).size() > avg) {
 							for (SurveyRecord surveyRecord : recordList) {
 								String options = surveyRecord.getOptions();
 								String optionsArray[] = options.split(",");
@@ -130,8 +136,8 @@ public class RecordAnalysisWX extends RecordAnalysis {
 									resultMap.get(option_1)
 											.remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
 									resultMap.get(option).add(surveyRecord.getStuId());
-									happiness = happiness - 2;
-									if (resultMap.get(option).size() >= 4) {
+									score = score - scores[0] + scores[1];
+									if (resultMap.get(option).size() >= avg - 1) {
 										break aa;
 									}
 								} else {
@@ -140,11 +146,11 @@ public class RecordAnalysisWX extends RecordAnalysis {
 							}
 						}
 					}
-					if (resultMap.get(option).size() >= 4) {
+					if (resultMap.get(option).size() >= avg - 1) {
 						break;
 					}
 					for (String option_1 : resultMap.keySet()) {
-						if (resultMap.get(option_1).size() > 5) {
+						if (resultMap.get(option_1).size() > avg) {
 							for (SurveyRecord surveyRecord : recordList) {
 								String options = surveyRecord.getOptions();
 								String optionsArray[] = options.split(",");
@@ -152,8 +158,8 @@ public class RecordAnalysisWX extends RecordAnalysis {
 									resultMap.get(option_1)
 											.remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
 									resultMap.get(option).add(surveyRecord.getStuId());
-									happiness = happiness - 3;
-									if (resultMap.get(option).size() >= 4) {
+									score = score - scores[0] + scores[2];
+									if (resultMap.get(option).size() >= avg - 1) {
 										break aa;
 									}
 								} else {
@@ -162,16 +168,16 @@ public class RecordAnalysisWX extends RecordAnalysis {
 							}
 						}
 					}
-					if (resultMap.get(option).size() >= 4) {
+					if (resultMap.get(option).size() >= avg - 1) {
 						break;
 					}
 					for (String option_1 : resultMap.keySet()) {
-						if (resultMap.get(option_1).size() > 5) {
+						if (resultMap.get(option_1).size() > avg) {
 							Integer stuId = resultMap.get(option_1).get(resultMap.get(option_1).size() - 1);
 							resultMap.get(option_1).remove(resultMap.get(option_1).size() - 1);
 							resultMap.get(option).add(stuId);
-							happiness = happiness - 5;
-							if (resultMap.get(option).size() >= 4) {
+							score = score - scores[0] + scores[3];
+							if (resultMap.get(option).size() >= avg - 1) {
 								break aa;
 							}
 						}
@@ -183,7 +189,7 @@ public class RecordAnalysisWX extends RecordAnalysis {
 			}
 		}
 		result.setResultList(resultMap);
-		result.setScore(happiness);
+		result.setScore(score);
 		return result;
 	}
 
