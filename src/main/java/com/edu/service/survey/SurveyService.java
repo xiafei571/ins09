@@ -1,5 +1,9 @@
 package com.edu.service.survey;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.edu.domain.Survey;
 import com.edu.domain.SurveyForm;
 import com.edu.domain.SurveyOption;
@@ -13,6 +17,10 @@ public interface SurveyService {
 	
 	Survey getSurveyById(Integer surveyId);
 	
-	SurveyOption getOptionById(Integer surveyId);
+	Integer getSurvey_OptionById(Integer SurveyId);
+	
+	
+	 List<SurveyOption>  getSurveyOptionList(Integer option_id);
+	    
 
 }
