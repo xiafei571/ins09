@@ -11,6 +11,10 @@ public class SurveyForm {
 	private String surveyDesc;
 
 	private List<SurveyOption> options;
+	
+	public SurveyForm() {
+		
+	}
 
 	public SurveyForm(Survey survey, List<SurveyOption> options) {
 		this.surveyId = survey.getSurveyId();
