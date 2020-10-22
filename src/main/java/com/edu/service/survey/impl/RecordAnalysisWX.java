@@ -70,7 +70,7 @@ public class RecordAnalysisWX extends RecordAnalysis {
 			if (resultMap.get(option).size() < avg - 1) {
 				aa: for (;;) {
 					for (String option_1 : resultMap.keySet()) {
-						if (resultMap.get(option_1).size() > avg + 1) {
+						if (resultMap.get(option_1).size() > 0) {
 							for (SurveyRecord surveyRecord : recordList) {
 								String options = surveyRecord.getOptions();
 								String optionsArray[] = options.split(",");
@@ -82,8 +82,6 @@ public class RecordAnalysisWX extends RecordAnalysis {
 									if (resultMap.get(option).size() >= avg - 1) {
 										break aa;
 									}
-								} else {
-									break;
 								}
 							}
 						}
@@ -127,28 +125,7 @@ public class RecordAnalysisWX extends RecordAnalysis {
 					if (resultMap.get(option).size() >= avg - 1) {
 						break;
 					}
-					for (String option_1 : resultMap.keySet()) {
-						if (resultMap.get(option_1).size() > avg) {
-							for (SurveyRecord surveyRecord : recordList) {
-								String options = surveyRecord.getOptions();
-								String optionsArray[] = options.split(",");
-								if (option_1.equals(optionsArray[0]) && option.equals(optionsArray[1])) {
-									resultMap.get(option_1)
-											.remove(resultMap.get(option_1).indexOf(surveyRecord.getStuId()));
-									resultMap.get(option).add(surveyRecord.getStuId());
-									score = score - scores[0] + scores[1];
-									if (resultMap.get(option).size() >= avg - 1) {
-										break aa;
-									}
-								} else {
-									break;
-								}
-							}
-						}
-					}
-					if (resultMap.get(option).size() >= avg - 1) {
-						break;
-					}
+					
 					for (String option_1 : resultMap.keySet()) {
 						if (resultMap.get(option_1).size() > avg) {
 							for (SurveyRecord surveyRecord : recordList) {
